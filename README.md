@@ -33,8 +33,7 @@ From that point, I've worked away at restoring a functional Visual Studio projec
 As of June 8, 2025, it is now at the proper state of an open source release.
 
 ### Notes
-This repository is not affilated with the original Truckload O' Tests development team, nor did I contribute to it when it was initially avaliable.<br>
-I simply updated and rewrote much of the code for the mod to have it function for the latest update of Baldi's Basics Plus and keeping the codebase clean of any messy code.
+This repository is not affilated with the original Truckload O' Tests development team, nor did I contribute to it when it was initially avaliable. I simply refurbished it's code and made the mod functional for the later Baldi's Basics Plus updates that came after the mod's release and takendown.
 
 If you are an individual who was a lead developer of the original mod, please shoot me a DM on Discord: __dev9998__<br>
 Any say on whether you would like to have this repository viewed by the public or kept private would be greatly appreciated.
