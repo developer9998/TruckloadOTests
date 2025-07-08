@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyName>TestVariants</AssemblyName>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GamePath>C:\Program Files (x86)\Steam\steamapps\common\Baldi's Basics Plus</GamePath>
+		<GameAssemblyPath>$(GamePath)\BALDI_Data\Managed</GameAssemblyPath>
+		<BepInExAssemblyPath>$(GamePath)\BepInEx\core</BepInExAssemblyPath>
+		<PluginsPath>$(GamePath)\BepInEx\plugins</PluginsPath>
+	</PropertyGroup>
+
+	<Target AfterTargets="Build" Name="Output">
+		<Copy SourceFiles="$(TargetPath);bin/Debug/$(TargetFramework)\TestVariants.pdb" DestinationFiles="$(PluginsPath)\TestVariants.dll;$(PluginsPath)\TestVariants.pdb" />
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
+		
+		<Reference Include="0Harmony">
+			<HintPath>$(BepInExAssemblyPath)\0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp" Publicize="true">
+			<HintPath>$(GameAssemblyPath)\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInEx">
+			<HintPath>$(BepInExAssemblyPath)\BepInEx.dll</HintPath>
+		</Reference>
+		<Reference Include="MTM101BaldAPI">
+			<HintPath>$(PluginsPath)\MTM101BaldAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+		  <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Baldi's Basics Plus\BepInEx\plugins\Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(GameAssemblyPath)\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>$(GameAssemblyPath)\UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(GameAssemblyPath)\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<HintPath>$(GameAssemblyPath)\UnityEngine.PhysicsModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>

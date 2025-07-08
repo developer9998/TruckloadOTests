@@ -1,0 +1,42 @@
+using TestVariants.Behaviours.Characters;
+using UnityEngine;
+
+namespace TestVariants.Models.StateMachine;
+
+public class Shelfman_Wander(Shelfman shelfman) : Shelfman_StateBase(shelfman)
+{
+    private float timer = 0f;
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        npc.Navigator.SetSpeed(30f);
+        npc.Navigator.maxSpeed = 30f;
+
+        ChangeNavigationState(new NavigationState_WanderRandom(npc, 0));
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        timer -= Time.deltaTime * npc.TimeScale;
+        if (timer <= 0f)
+        {
+            timer = Random.Range(15, 45);
+            npc.SayTheLine(true);
+        }
+    }
+
+    public override void PlayerInSight(PlayerManager player)
+    {
+        base.PlayerInSight(player);
+
+        if (!player.Tagged)
+        {
+            npc.asked = player;
+            npc.behaviorStateMachine.ChangeState(new Shelfman_Chase(npc));
+        }
+    }
+}
