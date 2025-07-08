@@ -3,6 +3,8 @@ Truckload O' Tests is a Baldi's Basics Plus mod created by TXV123Ham for Version
 ### History
 Truckload O' Tests was initially released on September 22, 2024 at 1:45 AM GMT by TXV123Ham.
 
+The mod heavily focusses on The Test character, with many characters and items based on said character. Most characters are wacky and absurd, they stand out from most others, and originated from a VRChat world made by TXV123Ham, which were later brought into the mod with the help of coder Big Thinker and another unspecified developer.
+
 The mod recieved seemingly positive reception, with fifteen thousand views on GameBanana and was made featured under the Baldi's Basics section of the site.
 
 The mod would remain avaliable for a little under six months, before being trashed on March 21, 2025 at 3:06 AM GMT.
@@ -30,7 +32,7 @@ It wasn't until June 6, 2025, when a lead over on Discord originating from the B
 
 From that point, I've worked away at restoring a functional Visual Studio project of the mod, repairing it for the latest Baldi's Basics Plus updates, correcting bugs in the original release, plus cleaning and organizing what I then had.
 
-As of June 8, 2025, it is now at the proper state of an open source release.
+As of June 8, 2025, my copy reached the point of a full unofficial open-source release after two long days.
 
 ### Notes
 This repository is not affilated with the original Truckload O' Tests development team, nor did I contribute to it when it was initially avaliable. I simply refurbished it's code and made the mod functional for the later Baldi's Basics Plus updates that came after the mod's release and takendown. **All credit for Truckload O' Tests goes towards this team for their work on this mod.**
