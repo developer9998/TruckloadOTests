@@ -2,7 +2,7 @@
 
 namespace TestVariants.Patches
 {
-    [HarmonyPatch(typeof(Entity), nameof(Entity.UpdateAllEntities))]
+    [HarmonyPatch(typeof(Entity), nameof(Entity.UpdateAllEntities)), HarmonyWrapSafe, HarmonyPriority(Priority.HigherThanNormal)]
     internal class EntityPatch
     {
         public static bool Prefix()

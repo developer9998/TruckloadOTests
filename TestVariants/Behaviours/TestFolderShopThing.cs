@@ -32,9 +32,7 @@ public class TestFolderShopThing : MonoBehaviour
             store.itemPurchased = true;
             store.playerLeft = false;
 
-            AudioSource audioSource = new GameObject().AddComponent<AudioSource>();
-            audioSource.clip = TestPlugin.Instance.assetMan.Get<SoundObject>("Lucky").soundClip;
-            audioSource.Play();
+            Singleton<CoreGameManager>.Instance.audMan.PlaySingle(TestPlugin.Instance.assetMan.Get<SoundObject>("Lucky"));
 
             gameObject.AddComponent<Rigidbody>();
             return;
