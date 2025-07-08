@@ -38,3 +38,8 @@ I simply updated and rewrote much of the code for the mod to have it function fo
 
 If you are an individual who was a lead developer of the original mod, please shoot me a DM on Discord: __dev9998__<br>
 Any say on whether you would like to have this repository viewed by the public or kept private would be greatly appreciated.
+
+### Links
+GameBanana (trashed): https://gamebanana.com/mods/543665
+
+Trash Response Thread: https://gamebanana.com/threads/226652
