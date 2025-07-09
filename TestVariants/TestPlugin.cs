@@ -27,7 +27,7 @@ public class TestPlugin : BaseUnityPlugin
 
     private const string modName = "BB+ Test Variants";
 
-    private const string modVersion = "1.0.0.0";
+    private const string modVersion = "1.0.1";
 
     internal new ManualLogSource Logger;
 
