@@ -37,6 +37,8 @@ public class TestPlugin : BaseUnityPlugin
 
     public AssetManager assetMan = new();
 
+    private GenericHallBuilder debugCannedTest, debugBubblerum, debugTestyDar, debugVase;
+
     public void Awake()
     {
         if (Instance == null || !Instance)
@@ -269,13 +271,15 @@ public class TestPlugin : BaseUnityPlugin
 
         SodaMachine bubblerumMachine = MakeSodaMachine(AssetLoader.TextureFromFile(Path.Combine(texturePath, "BubblerumSoda_Machine.png")), AssetLoader.TextureFromFile(Path.Combine(texturePath, "BubblerumSoda_Machine_Out.png")));
         bubblerumMachine.item = bubblerumObject;
-        GenericHallBuilder genericHallBuilder = Instantiate(FindResourceOfName<GenericHallBuilder>("BsodaHallBuilder", null));
-        ObjectPlacer myObjectPlacer = genericHallBuilder.objectPlacer;
+        debugBubblerum = Instantiate(FindResourceOfName<GenericHallBuilder>("BsodaHallBuilder", null));
+        Logger.LogInfo(debugBubblerum);
+        ObjectPlacer myObjectPlacer = debugBubblerum.objectPlacer;
         myObjectPlacer.prefab = bubblerumMachine.gameObject;
-        genericHallBuilder.objectPlacer = myObjectPlacer;
-        genericHallBuilder.MarkAsNeverUnload();
-        genericHallBuilder.gameObject.ConvertToPrefab(setActive: true);
-        assetMan.Add("BubblerumMachine", genericHallBuilder);
+        debugBubblerum.objectPlacer = myObjectPlacer;
+        debugBubblerum.MarkAsNeverUnload();
+        debugBubblerum.gameObject.ConvertToPrefab(setActive: true);
+        assetMan.Add("BubblerumMachine", debugBubblerum);
+
         #endregion
 
         #region Luckiest Coin
@@ -320,13 +324,14 @@ public class TestPlugin : BaseUnityPlugin
 
         SodaMachine testMachine = MakeSodaMachine((Texture)(object)AssetLoader.TextureFromFile(texturePath + "/CannedTestMachine.png"), (Texture)(object)AssetLoader.TextureFromFile(texturePath + "/CannedTestMachine_Out.png"));
         testMachine.item = cannedTestObject;
-        genericHallBuilder = Instantiate<GenericHallBuilder>(FindResourceOfName<GenericHallBuilder>("BsodaHallBuilder", null));
-        myObjectPlacer = genericHallBuilder.objectPlacer;
+        debugCannedTest = Instantiate<GenericHallBuilder>(FindResourceOfName<GenericHallBuilder>("BsodaHallBuilder", null));
+        myObjectPlacer = debugCannedTest.objectPlacer;
         myObjectPlacer.prefab = testMachine.gameObject;
-        genericHallBuilder.objectPlacer = myObjectPlacer;
-        genericHallBuilder.MarkAsNeverUnload();
-        genericHallBuilder.gameObject.ConvertToPrefab(setActive: true);
-        assetMan.Add("CannedTestMachine", genericHallBuilder);
+        debugCannedTest.objectPlacer = myObjectPlacer;
+        debugCannedTest.MarkAsNeverUnload();
+        debugCannedTest.gameObject.ConvertToPrefab(setActive: true);
+
+        assetMan.Add("CannedTestMachine", debugCannedTest);
         Sprite cannysprite = CreateSprite("CannedTestNPC", texturePath, 0.5f, 256f);
         Sprite cannyspriteb = CreateSprite("CannedTestNPCSplat", texturePath, 0.5f, 256f);
         assetMan.Add("CannedTestNPC", cannysprite);
@@ -382,13 +387,13 @@ public class TestPlugin : BaseUnityPlugin
 
         SodaMachine testyDachine = MakeSodaMachine((Texture)(object)AssetLoader.TextureFromFile(texturePath + "/TestyDachine.png"), (Texture)(object)AssetLoader.TextureFromFile(texturePath + "/TestyDachine_Out.png"));
         testyDachine.item = testyDarObject;
-        genericHallBuilder = Object.Instantiate<GenericHallBuilder>(FindResourceOfName<GenericHallBuilder>("BsodaHallBuilder", (AssetManager)null));
-        myObjectPlacer = genericHallBuilder.objectPlacer;
+        debugTestyDar = Object.Instantiate<GenericHallBuilder>(FindResourceOfName<GenericHallBuilder>("BsodaHallBuilder", (AssetManager)null));
+        myObjectPlacer = debugTestyDar.objectPlacer;
         myObjectPlacer.prefab = testyDachine.gameObject;
-        genericHallBuilder.objectPlacer = myObjectPlacer;
-        genericHallBuilder.MarkAsNeverUnload();
-        genericHallBuilder.gameObject.ConvertToPrefab(setActive: true);
-        assetMan.Add("TestyDachine", genericHallBuilder);
+        debugTestyDar.objectPlacer = myObjectPlacer;
+        debugTestyDar.MarkAsNeverUnload();
+        debugTestyDar.gameObject.ConvertToPrefab(setActive: true);
+        assetMan.Add("TestyDachine", debugTestyDar);
         #endregion
 
         #region Test YTPs
@@ -540,18 +545,18 @@ public class TestPlugin : BaseUnityPlugin
         #region Test Vase
         Logger.LogInfo("Loading Test Vase");
 
-        genericHallBuilder = Instantiate(FindResourceOfName<GenericHallBuilder>("PlantBuilder", null));
-        myObjectPlacer = genericHallBuilder.objectPlacer;
+        debugVase = Instantiate(FindResourceOfName<GenericHallBuilder>("PlantBuilder", null));
+        myObjectPlacer = debugVase.objectPlacer;
 
         GameObject vase = Instantiate(myObjectPlacer.prefab);
         assetMan.Add("vase", CreateSprite("Test_Vase", texturePath, 0f, 15f));
         vase.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = CreateSprite("Test_Vase", texturePath, 0f, 15f);
         vase.ConvertToPrefab(setActive: true);
         myObjectPlacer.prefab = vase;
-        genericHallBuilder.objectPlacer = myObjectPlacer;
-        genericHallBuilder.MarkAsNeverUnload();
-        genericHallBuilder.gameObject.ConvertToPrefab(setActive: true);
-        assetMan.Add("TestVase", genericHallBuilder);
+        debugVase.objectPlacer = myObjectPlacer;
+        debugVase.MarkAsNeverUnload();
+        debugVase.gameObject.ConvertToPrefab(setActive: true);
+        assetMan.Add("TestVase", debugVase);
         #endregion
 
         #endregion
@@ -905,21 +910,21 @@ public class TestPlugin : BaseUnityPlugin
 
         List<string> characterTextureNames =
         [
-            "PalbyFan1_Mad0",
-            "PalbyFan1_Mad1",
-            "PalbyFan1_Punch0",
-            "PalbyFan1_Punch1",
-            "PalbyFan1_Run0",
-            "PalbyFan1_Run1",
-            "PalbyFan1_Show0",
-            "PalbyFan1_Show1",
-            "PalbyFan1_Show2"
+            "_Mad0",
+            "_Mad1",
+            "_Punch0",
+            "_Punch1",
+            "_Run0",
+            "_Run1",
+            "_Show0",
+            "_Show1",
+            "_Show2"
         ];
 
         for (int i = 0; i < characterTextureNames.Count; i++)
         {
-            Sprite sprite = CreateSprite(characterTextureNames[i], texturePath, 0.5f, 256f);
-            assetMan.Add(characterTextureNames[i], sprite);
+            Sprite sprite = CreateSprite(string.Concat("PalbyFan1", characterTextureNames[i]), texturePath, 0.5f, 256f);
+            assetMan.Add(string.Concat("PalbyFan", characterTextureNames[i]), sprite);
         }
 
         SoundMetadata palbySoundData = new(SoundType.Voice, Color.magenta);
@@ -1385,6 +1390,65 @@ public class TestPlugin : BaseUnityPlugin
 
         // Custom object implementation
 
+        levelObject.forcedStructures = CollectionExtensions.AddToArray(levelObject.forcedStructures, new()
+        {
+            prefab = FindResourceObjects<Structure_EnvironmentObjectPlacer>().FirstOrDefault(builder => builder.randomlySelectWeightedPrefab) ?? new Structure_EnvironmentObjectPlacer()
+            {
+                generatedStructureData = [],
+                randomlySelectWeightedPrefab = true,
+                useWallDirection = true,
+                _eligibleDirections = []
+            },
+            parameters = new()
+            {
+                chance = [0],
+                minMax = [new(1, 3)],
+                prefab =
+                [
+                    new WeightedGameObject()
+                    {
+                        selection = ((GenericHallBuilder)assetMan.Get<ObjectBuilder>("BubblerumMachine")).objectPlacer.prefab,
+                        weight = 175
+                    },
+                    new WeightedGameObject()
+                    {
+                        selection = ((GenericHallBuilder)assetMan.Get<ObjectBuilder>("CannedTestMachine")).objectPlacer.prefab,
+                        weight = 175
+                    },
+                    new WeightedGameObject()
+                    {
+                        selection = ((GenericHallBuilder)assetMan.Get<ObjectBuilder>("TestyDachine")).objectPlacer.prefab,
+                        weight = 175
+                    }
+                ]
+            }
+        });
+
+        levelObject.forcedStructures = CollectionExtensions.AddToArray(levelObject.forcedStructures, new()
+        {
+            prefab = FindResourceObjects<Structure_EnvironmentObjectPlacer>().FirstOrDefault(builder => builder.randomlySelectWeightedPrefab) ?? new Structure_EnvironmentObjectPlacer()
+            {
+                generatedStructureData = [],
+                randomlySelectWeightedPrefab = true,
+                useWallDirection = true,
+                _eligibleDirections = []
+            },
+            parameters = new()
+            {
+                chance = [0],
+                minMax = [new(12, 24)],
+                prefab =
+                [
+                    new WeightedGameObject()
+                    {
+                        selection = ((GenericHallBuilder)assetMan.Get<ObjectBuilder>("TestVase")).objectPlacer.prefab,
+                        weight = 150
+                    }
+                ]
+            }
+        });
+
+        /*
         levelObject.specialHallBuilders = [.. CollectionExtensions.AddToArray<WeightedObjectBuilder>(levelObject.specialHallBuilders, new WeightedObjectBuilder
         {
             selection = assetMan.Get<ObjectBuilder>("BubblerumMachine"),
@@ -1408,6 +1472,7 @@ public class TestPlugin : BaseUnityPlugin
             selection = assetMan.Get<ObjectBuilder>("TestVase"),
             weight = 150
         })];
+        */
 
         // Item implementation
 
@@ -1638,7 +1703,7 @@ public class TestPlugin : BaseUnityPlugin
         sceneObject.MarkAsNeverUnload();
     }
 
-    // Asset utils - and one method is completely unused, haha
+    // Asset utils
 
     public static T[] FindResourceObjects<T>() where T : Object
     {
@@ -1718,6 +1783,8 @@ public class TestPlugin : BaseUnityPlugin
             mainTexture = sodaOutTex
         };
         sodaMachine.gameObject.ConvertToPrefab(true);
+        Instance.Logger.LogInfo(sodaMachine);
+
         return sodaMachine;
     }
 
