@@ -87,11 +87,11 @@ public class ThroneTest_Wander(ThroneTest ThroneTest) : ThroneTest_StateBase(Thr
         }
     }
 
-    public override void OnStateTriggerEnter(Collider other)
+    public override void OnStateTriggerEnter(Collider other, bool validCollision)
     {
-        base.OnStateTriggerEnter(other);
+        base.OnStateTriggerEnter(other, validCollision);
 
-        if (other.TryGetComponent(out Entity entity) & npc.Navigator.speed >= 20f && !entity.squished)
+        if (validCollision && other.TryGetComponent(out Entity entity) & npc.Navigator.speed >= 20f && !entity.squished)
         {
             npc.SetGuilty();
             GameObject gameObject = new();

@@ -27,11 +27,11 @@ public class AJOPI_YouAreDoneFor(AJOPI ajopi) : AJOPI_StateBase(ajopi)
         }
     }
 
-    public override void OnStateTriggerEnter(Collider other)
+    public override void OnStateTriggerEnter(Collider other, bool validCollision)
     {
-        base.OnStateTriggerEnter(other);
+        base.OnStateTriggerEnter(other, validCollision);
 
-        if (npc.Navigator.passableObstacles.Contains(PassableObstacle.Window) && other.CompareTag("Window")) other.GetComponent<Window>().Break(false);
+        if (validCollision && npc.Navigator.passableObstacles.Contains(PassableObstacle.Window) && other.CompareTag("Window")) other.GetComponent<Window>().Break(false);
     }
 
     public override void Update()
